@@ -86,12 +86,6 @@ class ListGraph {
 	}
     }
 
-    //add a new class to store each node's xy-coordinate
-    public class coordinateOfNode{
-
-
-
-	}
 };
 
 

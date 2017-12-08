@@ -22,15 +22,16 @@ public class AStarAlgorithm {
     }
 
     // calculate h(n)
-    private int heuristicCostEstimate(MazeGraph.ProcessedMaze processedMaze, MazeGraph.Position current){
-        int h = 0;
-        // 8 direction- diagonal distance
+    private double heuristicCostEstimate(MazeGraph.ProcessedMaze processedMaze, MazeGraph.Position current){
+        double h = 0;
         int currentX = current.x;
         int currentY = current.y;
         int goalX = processedMaze.goalNode.x;
         int goalY = processedMaze.goalNode.y;
+        // 8 direction- diagonal distance
+        h = Math.abs(currentX-goalX)+Math.abs(currentY-goalY);
         // 4 direction-manhatten distance
-
+        //h = Math.sqrt(Math.abs(currentX-goalX)*Math.abs(currentX-goalX)+Math.abs(currentY-goalY)*Math.abs(currentY-goalY));
         return h;
     }
 }

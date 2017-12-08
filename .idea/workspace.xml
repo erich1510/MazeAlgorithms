@@ -15,8 +15,8 @@
       <file leaf-file-name="MazeGraph.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MazeAlgorithm/src/MazeGraph.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="134" column="30" lean-forward="true" selection-start-line="134" selection-start-column="30" selection-end-line="134" selection-end-column="30" />
+            <state relative-caret-position="5">
+              <caret line="131" column="14" lean-forward="true" selection-start-line="131" selection-start-column="14" selection-end-line="131" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -25,8 +25,8 @@
       <file leaf-file-name="ListGraph.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MazeAlgorithm/src/ListGraph.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1290">
-              <caret line="90" column="0" lean-forward="true" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+            <state relative-caret-position="507">
+              <caret line="87" column="0" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -35,8 +35,8 @@
       <file leaf-file-name="AStarAlgorithm.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/MazeAlgorithm/src/AStarAlgorithm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="30" column="45" lean-forward="false" selection-start-line="30" selection-start-column="45" selection-end-line="30" selection-end-column="45" />
+            <state relative-caret-position="495">
+              <caret line="33" column="10" lean-forward="false" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#454#474#0" expanded="true" />
@@ -234,12 +234,12 @@
       <option name="presentableId" value="Default" />
       <updated>1512593807355</updated>
       <workItem from="1512593809043" duration="1407000" />
-      <workItem from="1512764790258" duration="3099000" />
+      <workItem from="1512764790258" duration="4020000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4506000" />
+    <option name="totallyTimeSpent" value="5427000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="26" y="23" width="1400" height="791" extended-state="0" />
@@ -315,26 +315,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MazeAlgorithm/src/ListGraph.java">
+    <entry file="file://$PROJECT_DIR$/MazeAlgorithm/src/MazeGraph.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1290">
-          <caret line="90" column="0" lean-forward="true" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+        <state relative-caret-position="5">
+          <caret line="131" column="14" lean-forward="true" selection-start-line="131" selection-start-column="14" selection-end-line="131" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MazeAlgorithm/src/MazeGraph.java">
+    <entry file="file://$PROJECT_DIR$/MazeAlgorithm/src/ListGraph.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="134" column="30" lean-forward="true" selection-start-line="134" selection-start-column="30" selection-end-line="134" selection-end-column="30" />
+        <state relative-caret-position="507">
+          <caret line="87" column="0" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MazeAlgorithm/src/AStarAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="45" lean-forward="false" selection-start-line="30" selection-start-column="45" selection-end-line="30" selection-end-column="45" />
+        <state relative-caret-position="495">
+          <caret line="33" column="10" lean-forward="false" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#454#474#0" expanded="true" />
