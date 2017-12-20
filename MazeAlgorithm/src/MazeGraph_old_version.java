@@ -39,7 +39,7 @@ public class MazeGraph_old_version {
         }
     }
     
-    /* This class holds the information that is passed to the DFS and BFS algorithms.
+    /* This class holds the information that is passed to the BFS and DFS algorithms.
      * It just contains the startNode, goalNode and the graph, represented with adjecency lists.
      */
     static class ProcessedGraph {
@@ -287,7 +287,7 @@ public class MazeGraph_old_version {
      * prints it. You can print the node-marked version instead by uncommenting
      * the next lines. Next it converts the maze to be a graph, returning the
      * graph object and the node numbers of the start and goal nodes. Once you
-     * have define BFS and DFS, uncomment these lines to test and print the
+     * have define DFS and BFS, uncomment these lines to test and print the
      * result.
      */
         ArrayList<String> unprocessedMaze = readMaze(mazeFile);
@@ -297,9 +297,9 @@ public class MazeGraph_old_version {
         printMaze(mazeCopy);
         System.out.println("StartNode=" + processedGraph.startNode + " GoalNode=" + processedGraph.goalNode);
         ArrayList<Integer> path1 = DFS(processedGraph);
-        printPath("DFS", path1);
+        printPath("BFS", path1);
         ArrayList<Integer> path2 = BFS(processedGraph);
-        printPath("BFS", path2);
+        printPath("DFS", path2);
         
     }
     
