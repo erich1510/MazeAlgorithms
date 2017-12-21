@@ -7,16 +7,14 @@ import java.util.Map;
 //use processedMaze: startPosition, goalPosition, openSquarePosition
 
 public class AStarAlgorithm {
-    MazeGraph.ProcessedMaze processedMaze;
-    ArrayList<MazeGraph.Position> closedSet;
-    ArrayList<MazeGraph.Position> openSet;
-    Map<MazeGraph.Position, MazeGraph.Position> comeFrom;
-    Map<MazeGraph.Position, Double> gScore;
-    Map<MazeGraph.Position, Double> fScore;
+    static ArrayList<MazeGraph.Position> closedSet;
+    static ArrayList<MazeGraph.Position> openSet;
+    static Map<MazeGraph.Position, MazeGraph.Position> comeFrom;
+    static Map<MazeGraph.Position, Double> gScore;
+   static  Map<MazeGraph.Position, Double> fScore;
 
-    //Constructor of A* algorithm
-    public AStarAlgorithm(MazeGraph.ProcessedMaze processedMaze){
-        this.processedMaze = processedMaze;
+    //not complete
+    public static ArrayList findPath(MazeGraph.ProcessedMaze processedMaze){
         MazeGraph.Position start = processedMaze.startNode;
         closedSet = new ArrayList<MazeGraph.Position>(); //list of nodes that has been evaluated (on the final path)
         openSet = new ArrayList<MazeGraph.Position>(); //list of nodes that has been discovered
@@ -25,11 +23,7 @@ public class AStarAlgorithm {
         gScore = new HashMap<MazeGraph.Position, Double>();
         gScore.put(start, 0.0);
         fScore = new HashMap<MazeGraph.Position, Double>();
-        fScore.put(start, heuristicCostEstimate(start));
-    }
-
-    //not complete
-    private ArrayList findPath(){
+        fScore.put(start, heuristicCostEstimate(processedMaze,start));
         while (!openSet.isEmpty()){
             MazeGraph.Position current = findNextNode();
             if (current == processedMaze.goalNode){
@@ -38,12 +32,36 @@ public class AStarAlgorithm {
             openSet.remove(current);
             closedSet.add(current);
 
+            ArrayList<MazeGraph.Position> neighs = findNeighs(processedMaze, current);
+            for (MazeGraph.Position neigh: neighs){
+                if (closedSet.contains(neigh)){
+                    continue;
+                }
+                if(!openSet.contains(neigh)){
+                    openSet.add(neigh);
+                }
+                double tentativeGScore = gScore.get(current)+1;
+                if (!gScore.containsKey(neigh)){
+                    comeFrom.put(neigh,current);
+                    gScore.put(neigh,tentativeGScore);
+                    double neighFScore = gScore.get(neigh)+heuristicCostEstimate(processedMaze, neigh);
+                    fScore.put(neigh, neighFScore);
+                }
+                else
+                    if (tentativeGScore<gScore.get(neigh) ){
+                    comeFrom.put(neigh,current);
+                    gScore.put(neigh,tentativeGScore);
+                    double neighFScore = gScore.get(neigh)+heuristicCostEstimate(processedMaze, neigh);
+                    fScore.put(neigh, neighFScore);
+                }
+            }
+
         }
         return null;
     }
 
     //find all neighbors
-    private ArrayList findNeighs(MazeGraph.Position current){
+    private static ArrayList findNeighs(MazeGraph.ProcessedMaze processedMaze, MazeGraph.Position current){
         ArrayList<MazeGraph.Position> neighs = new ArrayList<MazeGraph.Position>();
         int x=current.x;
         int y = current.y;
@@ -65,7 +83,7 @@ public class AStarAlgorithm {
     }
 
     //contruct the path
-    private ArrayList contructPath(MazeGraph.Position current){
+    private static ArrayList contructPath(MazeGraph.Position current){
         ArrayList<MazeGraph.Position> totalPath = new ArrayList<MazeGraph.Position>();
         totalPath.add(current);
         while (comeFrom.containsKey(current)){
@@ -76,7 +94,7 @@ public class AStarAlgorithm {
     }
 
     //find node in openSet that has the smallest fScore
-    private MazeGraph.Position findNextNode(){
+    private static MazeGraph.Position findNextNode(){
         MazeGraph.Position current = openSet.get(0);
         for (MazeGraph.Position node: openSet){
             if (fScore.get(node)<fScore.get(current)){
@@ -87,7 +105,7 @@ public class AStarAlgorithm {
     }
 
     // calculate h(n)
-    private double heuristicCostEstimate(MazeGraph.Position current){
+    private static double heuristicCostEstimate(MazeGraph.ProcessedMaze processedMaze, MazeGraph.Position current){
         double h = 0;
         int currentX = current.x;
         int currentY = current.y;
@@ -98,5 +116,30 @@ public class AStarAlgorithm {
         // 4 direction-manhatten distance
         h = Math.sqrt(Math.abs(currentX-goalX)*Math.abs(currentX-goalX)+Math.abs(currentY-goalY)*Math.abs(currentY-goalY));
         return h;
+    }
+
+    public static void testMaze(String mazeFile) {
+    /*
+     * Takes a filename as input. It reads the maze from that file, and
+     * prints it. You can print the node-marked version instead by uncommenting
+     * the next lines. Next it converts the maze to be a graph, returning the
+     * graph object and the node numbers of the start and goal nodes. Once you
+     * have define DFS and BFS, uncomment these lines to test and print the
+     * result.
+     */
+        ArrayList<String> unprocessedMaze = MazeGraph.readMaze(mazeFile);         // reads the maze from a file
+        MazeGraph.printMaze(unprocessedMaze);
+        MazeGraph.ProcessedMaze processedMaze = MazeGraph.collectOpenSquares(unprocessedMaze);    // converts the maze to a graph for you
+        ArrayList<String> mazeCopy = MazeGraph.nodeMarkedMaze(unprocessedMaze);
+        MazeGraph.printMaze(mazeCopy);
+        System.out.println("StartNode=" + processedMaze.startNode + " GoalNode=" + processedMaze.goalNode);  // shows how to access start and goal.
+        // To access the graph, you would use processedGraph.graph
+        ArrayList<Integer> path2 = findPath(processedMaze);
+        MazeGraph.printPath("A*", path2);
+    }
+
+    public static void main(String args[]) {
+        testMaze("/Users/xuchen/IdeaProjects/HW2/src/maze1.txt");
+
     }
 }
